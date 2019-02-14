@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ptrstn/runregistryclient.svg?branch=master)](https://travis-ci.com/ptrstn/runregistryclient)
+
 # CERN CMS Run Registry client
 
 A python client to the new [Run Registry](https://cmsrunregistry.web.cern.ch/).
