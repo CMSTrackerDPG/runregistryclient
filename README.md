@@ -4,9 +4,8 @@
 
 # CERN CMS Run Registry client
 
-A python client to the new [Run Registry](https://cmsrunregistry.web.cern.ch/).
-An python client to the [old Run Registry]() can be found [here](https://github.com/ptrstn/runregcrawlr/tree/master/runregcrawlr).
-
+A Python client for the [new RunRegistry](https://cmsrunregistry.web.cern.ch/). 
+A Python client for the [old RunRegistry](https://cmswbmoffshift.web.cern.ch/cmswbmoffshift/runregistry_offline/index.jsf) can be found [here](https://github.com/ptrstn/runregcrawlr/tree/master/runregcrawlr).
 
 ## Installation
 
@@ -18,7 +17,7 @@ pip install git+https://github.com/ptrstn/runregistryclient
 
 ### Example 
 
-If you want to get a single run do:
+If you want a single run, do this:
 
 ```python
 import runreg
@@ -26,7 +25,7 @@ import runreg
 runreg.get(run_number=327600)
 ```
 
-If you prefer a non nested json output then use the ```flat=True``` parameter
+If you prefer a non-nested JSON output, use the ```flat=True``` parameter.
 
 ```python
 import runreg
@@ -34,7 +33,8 @@ import runreg
 runreg.get(run_number=327600, flat=True)
 ```
 
-```runreg``` assumes per default the *tracker* workspace. If you want to change it, you can do so by specifying the ```workspace``` attribute:
+```runreg``` assumes the *tracker* workspace by default. 
+If you want to change it, you can do so by specifying the ```workspace``` attribute:
 
 ```python
 import runreg
@@ -44,7 +44,7 @@ runreg.get(run_number=327600, workspace="global")
 
 #### Multiple filters at once
 
-If you want to use multiple filters at once, for example, to filter by a run number range with a specific criteria, then you can do so like this:
+If you want to use several filters at once, for example, to filter according to a sequence number range with certain criteria, you can do it this way:
 
 ```python
 import runreg
@@ -64,17 +64,17 @@ Following operators are supported:
 * ```<``` or ```lt```
 * ```like```
 
-The operators should be specified as the second element of a (value, operator) tuple such as ```(321123, "<=")```
+The operators should be specified as the second element of a (value, operator) tuple such as ```(321123, "<=")```.
 
 ### Attributes
 
-All available attributes can be found in the ```docs``` folder under ```attributes.md```
+All available attributes can be found in the ```docs``` folder under ```attributes.md```.
 
 ## Development
 
 Python version *3.5* or higher is required.
 
-If you want to improve this software you should follow these steps:
+If you want to improve this software, you should follow these steps:
 
 ```bash
 git clone https://github.com/ptrstn/runregistryclient
@@ -95,10 +95,10 @@ pytest
 
 ### How do you filter by subcomponent status?
 
-When you want to filter by subcomponent status like *Pixel*, or *SiStrip* you have to follow to use the attribute names es specified in the RunRegistry API.
-Unfortunately they contain "-" and "." therefore you have to use a little trick.
+If you want to filter for subcomponent states such as *Pixel* or *SiStrip*, you must use the attribute names specified in the RunRegistry API.
+Unfortunately, they contain "-" and ".", characters so you need to use a little trick.
 
-For example to filter by ```track``` ```status``` in the ```tracker``` workspace you have to do:
+For example, to filter for the ```Track``` ```Status``` in the workspace ```Tracker``` then you need to do:
 
 ```python
 import runreg
@@ -116,8 +116,8 @@ runreg.get(flat=True, run_number=[(327596, ">="), (327744, "lte")], **{"pix.stat
 
 ### Whats the difference between tracker-track and track?
 
-```track``` is used for the *global* workspace while ```tracker-track``` uses the *tracker* workspace. 
-Same applies for ```tracker-pix```/```pix```, ```tracker-strip```/```strip```.
+```track``` is used for the *global* workspace, while ```tracker-track``` uses the *tracker* workspace. 
+The same is true for ```tracker-pix``` / ```pix``` and ```tracker-strip``` / ```strip```.
 
 ## References
 
