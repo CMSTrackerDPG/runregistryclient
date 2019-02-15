@@ -30,29 +30,32 @@ def create_filter(**kwargs):
     return {key: to_runreg_filter(value) for key, value in kwargs.items()}
 
 
-def flatten_run(run):
-    """discards lumisection, flattens attributes"""
-    flat_run = {}
+def flatten(dictionary, parent_keys=(), seperator="__", skip=()):
+    """
+    Recursively flatten a dictionary
 
-    for key, value in run.items():
-        if type(value) != dict:
-            flat_run[key] = value
-        elif "lumisections" not in key and key != "run":
-            if "value" in value.keys():
-                flat_run[key] = value["value"]
-                assert "status" not in value.keys()
-                assert "comment" not in value.keys()
-                assert "cause" not in value.keys()
-            else:
-                flat_run["{}_status".format(key)] = value["status"]
-                flat_run["{}_comment".format(key)] = value["comment"]
-                flat_run["{}_cause".format(key)] = value["cause"]
+    :param dictionary: dictionary
+    :param parent_keys: list of prefixes seperated by seperator
+    :param seperator: parent key seperator
+    :param skip: skip keys that contain any of these items
+    :return: flattened dictionary
+    """
+    try:
+        key, value = dictionary.popitem()
+        if any([item in key for item in skip]):
+            return {**flatten(dictionary, parent_keys, seperator, skip)}
+        if isinstance(value, dict):
+            return {
+                **flatten(dictionary, parent_keys, seperator, skip),
+                **flatten(value, [*parent_keys, key], seperator, skip),
+            }
+        return {
+            **flatten(dictionary, parent_keys, seperator, skip),
+            seperator.join([*parent_keys, key]): value,
+        }
+    except KeyError:
+        return {}
 
-    for key, value in run["run"].items():
-        flat_run[key] = value["value"]
 
-    return flat_run
-
-
-def flatten_runs(runs):
-    return [flatten_run(run) for run in runs]
+def flatten_runs(runs, skip=("history", "lumisections"), **kwargs):
+    return [flatten(run, skip=skip, **kwargs) for run in runs]

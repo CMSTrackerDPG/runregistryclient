@@ -1,9 +1,6 @@
 import json
-
 import requests
-
 from runreg.utils import create_filter, flatten_runs
-
 
 url_format = (
     "https://cmsrunregistry.web.cern.ch/api/datasets/{workspace}/editable/{page}/"
