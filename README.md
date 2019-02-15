@@ -83,13 +83,13 @@ cd runregistryclient
 python -m venv venv
 . venv/bin/activate
 pip install -e .
-pip install -r testing-requirements
+pip install -r testing-requirements.txt
 ```
 
 ### Running Tests
 
 ```
-pytest
+pytest --cov .
 ```
 
 ## FAQ
