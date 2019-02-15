@@ -32,13 +32,22 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
+with open(os.path.join(here, "README.md")) as f:
+    long_description = f.read()
+
+
 setup(
     name="runregistryclient",
     version=find_version("runreg", "__init__.py"),
     desription="CERN CMS RunRegistry client",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/ptrstn/runregistryclient",
     author="Peter Stein",
     author_email="peter.stein@cern.ch",
     packages=find_packages(),
     install_requires=["requests"],
+    classifiers=[
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    ],
 )
