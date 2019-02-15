@@ -1,0 +1,7 @@
+[run]
+source=runregistryclient
+
+omit =
+    tests/*
+    venv/*
+    setup.py
