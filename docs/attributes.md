@@ -561,9 +561,7 @@ E.g. ```GOOD``` or ```BAD```
 * ```hlt_lumisections```
 * ```jetmet_lumisections```
 * ```l1t_lumisections```
-* ```lumi_state```
 * ```lumi_lumisections```
-* ```lumi-lumi```
 * ```muon_lumisections```
 * ```rpc_lumisections```
 * ```tau_lumisections```
