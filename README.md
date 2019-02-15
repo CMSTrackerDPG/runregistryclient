@@ -97,7 +97,7 @@ pytest --cov .
 ### How do you filter by subcomponent status?
 
 If you want to filter for subcomponent states such as *Pixel* or *SiStrip*, you must use the attribute names specified in the RunRegistry API.
-Unfortunately, they contain "-" and ".", characters so you need to use a little trick.
+Unfortunately, they contain "-" and "." characters, so you need to use a little trick.
 
 For example, to filter for the ```Track``` ```Status``` in the workspace ```Tracker``` then you need to do:
 
