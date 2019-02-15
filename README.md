@@ -11,7 +11,7 @@ A Python client for the [old RunRegistry](https://cmswbmoffshift.web.cern.ch/cms
 ## Installation
 
 ```bash
-pip install cernrequests
+pip install runregistryclient
 ```
 
 ## Usage
