@@ -28,7 +28,7 @@ def get(flat=False, workspace="tracker", **kwargs):
     resources = initial_response.get("datasets")
 
     for page_number in range(1, page_count):
-        page = _get_page(page_number, **kwargs)
+        page = _get_page(page_number, workspace, **kwargs)
         resources.extend(page.get("datasets"))
 
     if flat:

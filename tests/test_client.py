@@ -1,6 +1,12 @@
 import runreg
 
 
+def test_get_multiple_pages():
+    runs = runreg.get(run_number=[(327744, "<="), (327030, ">=")])
+    count = len(runs)
+    assert count >= 75 and count <= 100
+
+
 def test_get_flat():
     runs = runreg.get(flat=True, run_number=(327596, "="))
     run = runs[0]
