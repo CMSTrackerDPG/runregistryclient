@@ -69,6 +69,27 @@ The operators should be specified as the second element of a (value, operator) t
 
 All available attributes can be found in the ```docs``` folder under ```attributes.md```
 
+## Development
+
+Python version *3.5* or higher is required.
+
+If you want to improve this software you should follow these steps:
+
+```bash
+git clone https://github.com/ptrstn/runregistryclient
+cd runregistryclient
+python -m venv venv
+. venv/bin/activate
+pip install -e .
+pip install -r testing-requirements
+```
+
+### Running Tests
+
+```
+pytest
+```
+
 ## FAQ
 
 ### How do you filter by subcomponent status?
