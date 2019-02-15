@@ -13,7 +13,7 @@ def attribute_to_run_reg_filter(attribute):
         assert len(attribute) <= 2, "Attribute can only be key, value pair"
         if len(attribute) == 2:
             return {to_runreg_filter_operator(attribute[1]): str(attribute[0])}
-        return {"=": attribute[0]}
+        return {"=": str(attribute[0])}
     return {"=": str(attribute)}
 
 

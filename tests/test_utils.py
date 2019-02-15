@@ -38,6 +38,9 @@ def test_create_filter():
     actual = create_filter(run_number=(123456, "lt"))
     assert actual == {"run_number": {"<": "123456"}}
 
+    actual = create_filter(run_number=(123456,))
+    assert actual == {"run_number": {"=": "123456"}}
+
     actual = create_filter(
         run_number=[(123456, "lt"), (234567, ">=")], name=("Cosmics", "like")
     )
