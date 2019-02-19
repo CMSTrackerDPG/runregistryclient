@@ -36,8 +36,12 @@ def _get_page(page, workspace, **kwargs):
 
 def get(flat=False, workspace="tracker", **kwargs):
     initial_response = _get_page(0, workspace, **kwargs)
-    page_count = initial_response.get("pages")
-    resources = initial_response.get("datasets")
+
+    if "err" in initial_response:
+        raise ValueError(initial_response['err'])
+
+    page_count = initial_response["pages"]
+    resources = initial_response["datasets"]
 
     for page_number in range(1, page_count):
         page = _get_page(page_number, workspace, **kwargs)
