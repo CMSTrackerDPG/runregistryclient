@@ -12,7 +12,7 @@
 
 import json
 import requests
-from runreg.utils import create_filter, flatten_runs
+from runreg.utils import create_filter, flatten_runs, convert_lookup_fields
 
 url_format = (
     "https://cmsrunregistry.web.cern.ch/api/datasets/{workspace}/editable/{page}/"
@@ -30,7 +30,7 @@ def _create_payload(page_size=PAGE_SIZE, **kwargs):
 def _get_page(page, workspace, **kwargs):
     url = url_format.format(workspace=workspace.lower(), page=page)
     headers = {"Content-type": "application/json"}
-    payload = _create_payload(**kwargs)
+    payload = _create_payload(**(convert_lookup_fields(**kwargs)))
     return requests.post(url, headers=headers, data=payload).json()
 
 
@@ -38,7 +38,7 @@ def get(flat=False, workspace="tracker", **kwargs):
     initial_response = _get_page(0, workspace, **kwargs)
 
     if "err" in initial_response:
-        raise ValueError(initial_response['err'])
+        raise ValueError(initial_response["err"])
 
     page_count = initial_response["pages"]
     resources = initial_response["datasets"]

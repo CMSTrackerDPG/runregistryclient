@@ -71,3 +71,29 @@ def flatten(dictionary, parent_keys=(), seperator="__", skip=()):
 
 def flatten_runs(runs, skip=("history", "lumisections"), **kwargs):
     return [flatten(run, skip=skip, **kwargs) for run in runs]
+
+
+def convert_lookup_fields(**field_lookups):
+    """
+    Converts Django like field lookups to RunRegistry compatible filters.
+
+    See:
+    https://docs.djangoproject.com/en/dev/topics/db/queries/#field-lookups
+    """
+    kwargs = {}
+    for key, value in field_lookups.items():
+        if "__" in key:
+            new_key, operator = tuple(key.split("__"))
+            if new_key in kwargs:
+                if type(kwargs[new_key]) != list:
+                    existing_value = kwargs[new_key]
+                    kwargs[new_key] = [existing_value]
+                kwargs[new_key].append((value, operator))
+            else:
+                kwargs[new_key] = (value, operator)
+        else:
+            if key in kwargs:
+                kwargs[key].append(value)
+            else:
+                kwargs[key] = value
+    return kwargs

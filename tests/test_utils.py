@@ -10,7 +10,7 @@
 # granted to it by virtue of its status as an Intergovernmental Organization
 # or submit itself to any jurisdiction.
 
-from runreg.utils import to_runreg_filter, create_filter, flatten
+from runreg.utils import to_runreg_filter, create_filter, flatten, convert_lookup_fields
 
 
 class TestRunRegFilter:
@@ -107,4 +107,30 @@ class TestFlatten:
 
         expected = {"a": "1", "b__d": "3", "e__f__g": "4"}
         actual = flatten(dictionary, skip=["c"])
+        assert actual == expected
+
+
+class TestFieldLookup:
+    def test_simple(self):
+        actual = convert_lookup_fields(run_number__gte=123456)
+        expected = {"run_number": (123456, "gte")}
+        assert actual == expected
+
+    def test_two_filters(self):
+        actual = convert_lookup_fields(run_number__gte=123456, run_number__lt=345678)
+        expected = {"run_number": [(123456, "gte"), (345678, "lt")]}
+        assert actual == expected
+
+    def test_mixed(self):
+        actual = convert_lookup_fields(
+            run_number__gte=123456,
+            pixel="GOOD",
+            bla=[("%blubb%", "like"), (123, "=")],
+            run_number__lt=345678,
+        )
+        expected = {
+            "run_number": [(123456, "gte"), (345678, "lt")],
+            "pixel": "GOOD",
+            "bla": [("%blubb%", "like"), (123, "=")],
+        }
         assert actual == expected

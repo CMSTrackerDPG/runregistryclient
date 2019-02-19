@@ -16,7 +16,7 @@ import runreg
 def test_get_multiple_pages():
     runs = runreg.get(run_number=[(327744, "<="), (327030, ">=")])
     count = len(runs)
-    assert count >= 75 and count <= 100
+    assert 75 <= count <= 100
 
 
 def test_get_flat():
@@ -722,3 +722,20 @@ def test_get():
     assert "status" in run["strip"]
     assert "status" in run["pix"]
     assert "status" in run["track"]
+
+
+def test_get_with_lookup_field():
+    runs = runreg.get(run_number__eq=327596)
+    run = runs[0]
+    assert run["run_number"] == 327596
+    assert run["name"] == "/PromptReco/HICosmics18A/DQM"
+    assert run["run"]["class"]["value"] == "Cosmics18"
+    assert "status" in run["strip"]
+    assert "status" in run["pix"]
+    assert "status" in run["track"]
+
+
+def test_get_with_multiple_lookup_fields():
+    runs = runreg.get(run_number__lte=327744, run_number__gte=327033)
+    count = len(runs)
+    assert 75 <= count <= 100

@@ -53,6 +53,15 @@ import runreg
 runreg.get(run_number=[(327596, ">="), (327744, "lte")], name=("%Cosmics%", "like"))
 ```
 
+Or if you prefer [Django like](https://docs.djangoproject.com/en/dev/topics/db/queries/#field-lookups) lookup fields:
+
+```python
+import runreg
+
+runreg.get(run_number__gte=327596, run_number__lte=327744, name__like="%Cosmics%")
+```
+
+
 ### Operators
 
 Following operators are supported:
