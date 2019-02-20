@@ -128,6 +128,10 @@ runreg.get(flat=True, run_number=[(327596, ">="), (327744, "lte")], **{"pix.stat
 ```track``` is used for the *global* workspace, while ```tracker-track``` uses the *tracker* workspace. 
 The same is true for ```tracker-pix``` / ```pix``` and ```tracker-strip``` / ```strip```.
 
+### Does this work with Python 2.7?
+
+No.
+
 ## References
 
 * https://cmsrunregistry.web.cern.ch/
