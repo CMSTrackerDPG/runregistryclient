@@ -119,7 +119,7 @@ class TestFieldLookup:
     def test_two_filters(self):
         actual = convert_lookup_fields(run_number__gte=123456, run_number__lt=345678)
         expected = {"run_number": [(123456, "gte"), (345678, "lt")]}
-        assert actual == expected
+        assert set(actual["run_number"]) == set(expected['run_number'])
 
     def test_mixed(self):
         actual = convert_lookup_fields(
@@ -134,4 +134,6 @@ class TestFieldLookup:
             "pixel": "GOOD",
             "bla": [("%blubb%", "like"), (123, "=")],
         }
-        assert actual == expected
+        assert set(actual["run_number"]) == set(expected['run_number'])
+        assert actual["pixel"] == expected['pixel']
+        assert set(actual["bla"]) == set(expected['bla'])
