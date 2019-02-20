@@ -127,9 +127,10 @@ class TestFieldLookup:
             pixel="GOOD",
             bla=[("%blubb%", "like"), (123, "=")],
             run_number__lt=345678,
+            run_number=234567
         )
         expected = {
-            "run_number": [(123456, "gte"), (345678, "lt")],
+            "run_number": [(123456, "gte"), (345678, "lt"), 234567],
             "pixel": "GOOD",
             "bla": [("%blubb%", "like"), (123, "=")],
         }
