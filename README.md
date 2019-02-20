@@ -68,7 +68,6 @@ Following operators are supported:
 
 * ```=``` or ```eq``` (assumed per default)
 * ```>=``` or ```gte```
-* ```>=``` or ```gte```
 * ```>``` or ```gt```
 * ```<=``` or ```lte```
 * ```<``` or ```lt```
