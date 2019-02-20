@@ -93,6 +93,9 @@ def convert_lookup_fields(**field_lookups):
                 kwargs[new_key] = (value, operator)
         else:
             if key in kwargs:
+                if type(kwargs[key]) != list:
+                    existing_value = kwargs[key]
+                    kwargs[key] = [existing_value]
                 kwargs[key].append(value)
             else:
                 kwargs[key] = value

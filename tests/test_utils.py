@@ -137,3 +137,13 @@ class TestFieldLookup:
         assert set(actual["run_number"]) == set(expected['run_number'])
         assert actual["pixel"] == expected['pixel']
         assert set(actual["bla"]) == set(expected['bla'])
+
+    def test_mixed2(self):
+        actual = convert_lookup_fields(
+            run_number__lt=345678,
+            run_number=(123456, 'gte'),
+        )
+        expected = {
+            "run_number": [(345678, "lt"), (123456, "gte")]
+        }
+        assert set(actual["run_number"]) == set(expected['run_number'])
