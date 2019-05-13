@@ -1,12 +1,12 @@
-[![Build Status](https://travis-ci.com/ptrstn/runregistryclient.svg?branch=master)](https://travis-ci.com/ptrstn/runregistryclient)
-[![codecov](https://codecov.io/gh/ptrstn/runregistryclient/branch/master/graph/badge.svg)](https://codecov.io/gh/ptrstn/runregistryclient)
+[![Build Status](https://travis-ci.com/CMSTrackerDPG/runregistryclient.svg?branch=master)](https://travis-ci.com/CMSTrackerDPG/runregistryclient)
+[![codecov](https://codecov.io/gh/CMSTrackerDPG/runregistryclient/branch/master/graph/badge.svg)](https://codecov.io/gh/CMSTrackerDPG/runregistryclient)
 [![](https://img.shields.io/pypi/v/runregistryclient.svg)](https://pypi.org/project/runregistryclient/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 # CERN CMS Run Registry client
 
 A Python client for the [new RunRegistry](https://cmsrunregistry.web.cern.ch/). 
-A Python client for the [old RunRegistry](https://cmswbmoffshift.web.cern.ch/cmswbmoffshift/runregistry_offline/index.jsf) can be found [here](https://github.com/ptrstn/runregcrawlr/tree/master/runregcrawlr).
+A Python client for the [old RunRegistry](https://cmswbmoffshift.web.cern.ch/cmswbmoffshift/runregistry_offline/index.jsf) can be found [here](https://github.com/CMSTrackerDPG/runregcrawlr/tree/master/runregcrawlr).
 
 ## Installation
 
@@ -86,7 +86,7 @@ Python version *3.5* or higher is required.
 If you want to improve this software, you should follow these steps:
 
 ```bash
-git clone https://github.com/ptrstn/runregistryclient
+git clone https://github.com/CMSTrackerDPG/runregistryclient
 cd runregistryclient
 python -m venv venv
 . venv/bin/activate
