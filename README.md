@@ -13,6 +13,13 @@ A Python client for the [old RunRegistry](https://cmswbmoffshift.web.cern.ch/cms
 ```bash
 pip install runregistryclient
 ```
+## Prerequisites
+
+Since mai 2019 the run registry requires authenticaion with a CERN user account.
+Therefore you need to setup your CERN Grid User Certificate as instructed in the cernrequests package:
+
+See: [https://github.com/ptrstn/cernrequests#prerequisites](https://github.com/ptrstn/cernrequests#prerequisites)
+
 
 ## Usage
 

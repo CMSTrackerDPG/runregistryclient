@@ -46,8 +46,6 @@ setup(
     author="Peter Stein",
     author_email="peter.stein@cern.ch",
     packages=find_packages(),
-    install_requires=["requests"],
-    classifiers=[
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-    ],
+    install_requires=["requests", "cernrequests"],
+    classifiers=["License :: OSI Approved :: GNU General Public License v3 (GPLv3)"],
 )

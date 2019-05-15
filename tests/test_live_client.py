@@ -9,9 +9,9 @@
 # In applying this licence, CERN does not waive the privileges and immunities
 # granted to it by virtue of its status as an Intergovernmental Organization
 # or submit itself to any jurisdiction.
+import pytest
 
 import runreg
-import pytest
 
 
 def test_get_multiple_pages():
