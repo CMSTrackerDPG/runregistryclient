@@ -9,6 +9,7 @@
 # In applying this licence, CERN does not waive the privileges and immunities
 # granted to it by virtue of its status as an Intergovernmental Organization
 # or submit itself to any jurisdiction.
+import pytest
 
 import runreg
 
@@ -739,3 +740,8 @@ def test_get_with_multiple_lookup_fields():
     runs = runreg.get(run_number__lte=327744, run_number__gte=327033)
     count = len(runs)
     assert 75 <= count <= 100
+
+
+def test_get_incorrect_parameters():
+    with pytest.raises(ValueError):
+        runreg.get(this_does_not_exist=1234)
