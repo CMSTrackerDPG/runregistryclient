@@ -12,7 +12,7 @@ install:
   - pip install -e .
 
 script:
-  - pytest --cov .
+  - pytest --cov . --ignore tests/test_live_client.py
 
 after_success:
   - codecov
